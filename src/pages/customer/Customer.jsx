@@ -14,7 +14,10 @@ export default function UserList() {
   };
   
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    { field: "id", 
+    headerName: "ID", 
+    width: 90
+   },
     {
       field: "user",
       headerName: "Customer",
@@ -30,7 +33,9 @@ export default function UserList() {
         );
       },
     },
-    { field: "email", headerName: "Email", width: 200 },
+    { field: "email", 
+    headerName: "Email", 
+    width: 200 },
     {
       field: "contact",
       headerName: "Contact Number",

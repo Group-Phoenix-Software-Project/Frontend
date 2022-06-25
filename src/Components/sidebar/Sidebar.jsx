@@ -42,10 +42,10 @@ export default function Sidebar() {
                Products
               </li>
             </Link>
-            <Link to="/employee" className="link">
+            <Link to="/employeeList" className="link">
             <li className="sidebarListItem ">
               <PermIdentity className="sidebarIcon" />
-              Employees
+              Employee Details
             </li>
             </Link>
             <Link to="/customer" className="link">

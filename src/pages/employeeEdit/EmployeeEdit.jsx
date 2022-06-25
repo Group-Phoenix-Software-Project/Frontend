@@ -1,118 +1,120 @@
 import {
-    CalendarToday,
-    LocationSearching,
-    MailOutline,
-    PermIdentity,
-    PhoneAndroid,
-    Publish,
-  } from "@material-ui/icons";
-  import { Link } from "react-router-dom";
-  import "./employeeEdit.css";
-  
-  export default function User() {
+  CalendarToday,
+  LocationSearching,
+  MailOutline,
+  PermIdentity,
+  PhoneAndroid,
+  Publish,
+} from "@material-ui/icons";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import "./employeeEdit.css";
+import axios from "axios";
+
+export default function EmployeeEdit() {
+  const UpdateEmployee = () => {
+    const params = useParams();
+
+    const [employeename, setEmployee] = useState("");
+
+    const [employees, setEmployees] = useState([]);
+
+    useEffect(() => {
+      axios
+        .get(`http://localhost:8080/getEmployeeByid/${params.id}`)
+        .then((response) => {
+          setEmployee(response.data);
+          console.log(response.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }, []);
+
+
+    const UpdateEmployee = () => {
+      axios
+        .put(`http://localhost:8080/updateEmployee/${params.id}`, {
+          employeename,
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+
+    const navigate = useNavigate();
+
+    function DelayRedirect(e, path) {
+      e.preventDefault();
+      setTimeout(() => navigate(path), 300);
+    }
+
     return (
       <div className="user">
         <div className="userTitleContainer">
           <h1 className="userTitle">Edit User</h1>
-          <Link to="/newUser">
-            <button className="userAddButton">Add New Employee</button>
-          </Link>
-        </div>
-        <div className="userContainer">
-          <div className="userShow">
-            <div className="userShowTop">
-              <img
-                src="https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                alt=""
-                className="userShowImg"
-              />
-              <div className="userShowTopTitle">
-                <span className="userShowUsername">Nadeeshani Perera</span>
-                <span className="userShowUserTitle">Software Engineer</span>
+          <form className="newUserForm">
+            <div className="newUserItem">
+              <label>First Name</label>
+              <input type="text" placeholder="Enter your user name" />
+            </div>
+            <div className="newUserItem">
+              <label>Last Name</label>
+              <input type="text" placeholder="Enter your full name" />
+            </div>
+            <div className="newUserItem">
+              <label>Gender</label>
+              <div className="newUserGender">
+                <input type="radio" name="gender" id="male" value="male" />
+                <label for="male">Male</label>
+                <input type="radio" name="gender" id="female" value="female" />
+                <label for="female">Female</label>
               </div>
             </div>
-            <div className="userShowBottom">
-              <span className="userShowTitle">Account Details</span>
-              <div className="userShowInfo">
-                <PermIdentity className="userShowIcon" />
-                <span className="userShowInfoTitle">nadeeshani99</span>
-              </div>
-              <div className="userShowInfo">
-                <CalendarToday className="userShowIcon" />
-                <span className="userShowInfoTitle">10.12.1999</span>
-              </div>
-              <span className="userShowTitle">Contact Details</span>
-              <div className="userShowInfo">
-                <PhoneAndroid className="userShowIcon" />
-                <span className="userShowInfoTitle">078 2541832</span>
-              </div>
-              <div className="userShowInfo">
-                <MailOutline className="userShowIcon" />
-                <span className="userShowInfoTitle">nadeeperera99@gmail.com</span>
-              </div>
-              <div className="userShowInfo">
-                <LocationSearching className="userShowIcon" />
-                <span className="userShowInfoTitle">Moratuwa</span>
-              </div>
+            <div className="newUserItem">
+              <label>Designation</label>
+              <input type="text" placeholder="Enter your full name" />
             </div>
-          </div>
-          <div className="userUpdate">
-            <span className="userUpdateTitle">Edit</span>
-            <form className="userUpdateForm">
-              <div className="userUpdateLeft">
-                <div className="userUpdateItem">
-                  <label>Username</label>
-                  <input
-                    type="text"
-                    className="userUpdateInput"
-                  />
-                </div>
-                <div className="userUpdateItem">
-                  <label>Full Name</label>
-                  <input
-                    type="text"
-                    className="userUpdateInput"
-                  />
-                </div>
-                <div className="userUpdateItem">
-                  <label>Email</label>
-                  <input
-                    type="text"
-                    className="userUpdateInput"
-                  />
-                </div>
-                <div className="userUpdateItem">
-                  <label>Phone</label>
-                  <input
-                    type="text"
-                    className="userUpdateInput"
-                  />
-                </div>
-                <div className="userUpdateItem">
-                  <label>Address</label>
-                  <input
-                    type="text"
-                    className="userUpdateInput"
-                  />
-                </div>
+            <div className="newUserItem">
+              <label>Date of Birth</label>
+              <input type="date" placeholder="Enter your full name" />
+            </div>
+            <div className="newUserItem">
+              <label>Address</label>
+              <input type="text" placeholder="Enter your full name" />
+            </div>
+            <div className="newUserItem">
+              <label>Contact No:</label>
+              <input type="text" placeholder="Enter your phone number" />
+            </div>
+            <div className="newUserItem">
+              <label>Email</label>
+              <input type="email" placeholder="Enter your email address" />
+            </div>
+            <div className="newUserItem">
+              <label>Password</label>
+              <input type="password" placeholder=" Enter your password" />
+            </div>
+            <div className="newUserItem">
+              <label>Salary</label>
+              <input type="number" />
+            </div>
+            <div className="userUpdateRight">
+              <div className="userUpdateUpload">
+                <label htmlFor="file">
+                  <Publish className="userUpdateIcon" />
+                </label>
+                <input type="file" id="file" style={{ display: "none" }} />
               </div>
-              <div className="userUpdateRight">
-                <div className="userUpdateUpload">
-                  <img
-                    className="userUpdateImg"
-                    src="https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                    alt=""
-                  />
-                  <label htmlFor="file">
-                    <Publish className="userUpdateIcon" />
-                  </label>
-                  <input type="file" id="file" style={{ display: "none" }} />
-                </div>
-                <button className="userUpdateButton">Update</button>
-              </div>
-            </form>
-          </div>
+              <button className="userUpdateButton">Update</button>
+            </div>
+          </form>
         </div>
       </div>
     );
   }
+}

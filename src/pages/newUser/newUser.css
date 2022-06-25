@@ -1,12 +1,14 @@
 .newUser {
     flex: 4;
   }
+
   
   .newUserForm {
     display: flex;
     flex-wrap: wrap;
     padding: 20px;
   }
+
   
   .newUserItem {
     width: 400px;
@@ -17,10 +19,11 @@
   }
   
   .newUserItem > label {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 18px;
-    font-weight: 600;
-    color: rgb(151, 150, 150);
+    font-weight: 400;
+    color: rgb(22, 20, 20);
+  
   }
   
   .newUserItem > input {
@@ -46,14 +49,41 @@
   }
   
   .newUserButton{
-      width: 200px;
-      border: none;
-      background-color: darkblue;
-      color: white;
-      padding: 7px 10px;
-      font-weight: 600;
-      border-radius: 10px;
-      margin-top: 30px;
-      cursor: pointer;
-      font-size: 20px;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: black;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 200px;
+    font-weight: 400;
+    border-radius: 10px;
+    margin-top: 30px;
+    cursor: pointer;
+    font-size: 20px;
+    text-align-last: center;
+    margin-left: 400px;
   }
+
+  .cancelUserButton{
+    background-color: #cfd6d0; /* Green */
+    border: none;
+    color: black;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 200px;
+    font-weight: 400;
+    border-radius: 10px;
+    margin-top: 30px;
+    cursor: pointer;
+    font-size: 20px;
+    text-align-last: center;
+   margin-left: 50px;
+  }
+  
+  
+  
+  

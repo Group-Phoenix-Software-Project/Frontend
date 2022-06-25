@@ -24,6 +24,12 @@ function App() {
   const handleMouseLeave = () => {
     setHoverValue(undefined)
   }
+  <script>
+    function clickAlert(){
+      alert("Thank you for your feedback")
+    }
+
+  </script>
 
 
   return (
@@ -54,7 +60,7 @@ function App() {
       />
 
       <button
-        style={styles.button}>
+        style={styles.button} onclick ="clickAler()">
         Submit
       </button>
       
